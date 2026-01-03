@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { trpc } from "@/lib/trpc";
 import { ArrowDownIcon, ArrowUpIcon, FileText, Receipt, TrendingUp } from "lucide-react";
 import { useMemo } from "react";
+import { getShortVersionString } from "@shared/version";
 
 export default function Dashboard() {
   const { data: jurisdictions } = trpc.jurisdictions.list.useQuery();
@@ -48,11 +49,29 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-8">
-      <div>
-        <h1 className="text-3xl font-bold">Dashboard</h1>
-        <p className="text-muted-foreground mt-2">
-          Cross-border accounting overview for UK and Netherlands operations
-        </p>
+      {/* Version Badge */}
+      <div className="flex justify-between items-center">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
+          <p className="text-muted-foreground mt-1">
+            Cross-border accounting overview for UK and Netherlands operations
+          </p>
+        </div>
+        <div className="text-right">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/10 border border-primary/20">
+            <span className="font-mono text-xs font-semibold text-primary">
+              {getShortVersionString()}
+            </span>
+          </div>
+          <a 
+            href="https://github.com/corzogac/ai4water_accounting" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="block text-xs text-muted-foreground hover:text-primary mt-1"
+          >
+            View on GitHub →
+          </a>
+        </div>
       </div>
 
       {/* Key Metrics */}

@@ -26,6 +26,7 @@ import { CSSProperties, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { DashboardLayoutSkeleton } from './DashboardLayoutSkeleton';
 import { Button } from "./ui/button";
+import { getShortVersionString } from "@shared/version";
 
 const menuItems = [
   { icon: LayoutDashboard, label: "Dashboard", path: "/" },
@@ -260,7 +261,39 @@ function DashboardLayoutContent({
             </div>
           </div>
         )}
-        <main className="flex-1 p-4">{children}</main>
+        <main className="flex-1 p-4">
+          {children}
+          
+          {/* Version Footer */}
+          <footer className="mt-12 pt-6 border-t">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
+              <div className="text-center md:text-left">
+                <p className="font-medium text-xs">AI4Water Accounting System</p>
+                <p className="text-xs mt-1">
+                  Cross-Border UK-NL Tax Compliance Platform
+                </p>
+              </div>
+              <div className="text-center">
+                <p className="text-xs">
+                  This system provides guidance only. Always verify with professional tax advisors.
+                </p>
+              </div>
+              <div className="text-center md:text-right">
+                <p className="font-mono text-xs font-semibold">
+                  {getShortVersionString()}
+                </p>
+                <a 
+                  href="https://github.com/corzogac/ai4water_accounting" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-xs text-primary hover:underline"
+                >
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </footer>
+        </main>
       </SidebarInset>
     </>
   );
