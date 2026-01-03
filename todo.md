@@ -107,3 +107,10 @@
 - [ ] Write deployment guide
 - [ ] Create user manual
 - [ ] Document security measures
+
+## GitHub Integration & Version Control
+- [ ] Create GitHub repository for ai4water_accounting
+- [ ] Push current codebase to GitHub
+- [ ] Add version and build timestamp to UI
+- [ ] Display version info in footer or header
+- [ ] Set up automatic version tagging on deployment
